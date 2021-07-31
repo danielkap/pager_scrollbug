@@ -69,13 +69,13 @@ class MainActivity : AppCompatActivity() {
 
 @ExperimentalPagerApi
 @Composable
-fun MainColumn(){
+fun MainColumn() {
     val scrollState = rememberScrollState()
 
     Column(
-        //verticalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier
             .verticalScroll(state = scrollState)
+            .height(1000.dp)
     ) {
         Spacer(modifier = Modifier.height(700.dp))
         MyHorizontalPager()
@@ -85,12 +85,13 @@ fun MainColumn(){
 
 @ExperimentalPagerApi
 @Composable
-fun MyHorizontalPager(){
+fun MyHorizontalPager() {
     val items = listOf("Freddy Foo", "Bertie Bar", "Bobby Baz")
     val pagerState =
         rememberPagerState(pageCount = items.size, infiniteLoop = true)
 
     HorizontalPager(
+        modifier = Modifier.height(200.dp),
         state = pagerState,
         verticalAlignment = Alignment.Top
     ) { page ->
@@ -98,7 +99,8 @@ fun MyHorizontalPager(){
             Modifier
                 .height(200.dp)
                 .fillMaxWidth()
-                .background(Color.Cyan)) {
+                .background(Color.Cyan)
+        ) {
             Text(items[page])
         }
     }
